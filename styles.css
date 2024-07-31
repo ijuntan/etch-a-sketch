@@ -12,7 +12,3 @@ body {
     flex-wrap: wrap;
     border: 1px solid black;
 }
-
-.grid-child {
-    outline: 1px solid black;
-}
