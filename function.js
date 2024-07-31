@@ -1,4 +1,6 @@
 const totalSize = 500;
+const colors = ["black", "white", "red", "yellow", "blue", "green"]
+let currentColor = "black"
 
 const initGrid = () => {
     // Initialize Grid UI
@@ -28,7 +30,7 @@ const initEventListener = () => {
     gridDiv.addEventListener('mouseover', (e) => {
         if(e.target.classList[0] === "grid-child") {
             const target = document.querySelector(`.${e.target.classList[1]}`)
-            target.style.backgroundColor = "black"
+            target.style.backgroundColor = currentColor
         }
     })
 }
@@ -45,5 +47,18 @@ const resetGrid = () => {
     }
 }
 
+const createColorPallete = () => {
+    const sidebarDiv = document.querySelector('.sidebar')
+    colors.forEach(color => {
+        const colorDiv = document.createElement('button');
+        colorDiv.setAttribute("title", color)
+        colorDiv.setAttribute("class", `color color-${color}`)
+        colorDiv.setAttribute("onclick", `currentColor = "${color}"`)
+        colorDiv.style.backgroundColor = color;
+        sidebarDiv.appendChild(colorDiv)
+    })
+}
+
 initGrid()
 initEventListener()
+createColorPallete()
