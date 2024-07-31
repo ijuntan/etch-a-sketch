@@ -2,9 +2,10 @@ const totalSize = 500;
 const colors = ["black", "white", "red", "yellow", "blue", "green"]
 let currentColor = "black"
 
+const gridDiv = document.querySelector('.grid');
+
 const initGrid = () => {
     // Initialize Grid UI
-    const gridDiv = document.querySelector('.grid');
     gridDiv.style.height = totalSize + "px";
     gridDiv.style.width = totalSize + "px";
 
@@ -12,7 +13,6 @@ const initGrid = () => {
 }
 
 const createGrid = (gridSize = 16) => {
-    const gridDiv = document.querySelector('.grid');
     const size = totalSize/gridSize
 
     for(i = 0; i < gridSize * gridSize; i++) {
@@ -25,7 +25,6 @@ const createGrid = (gridSize = 16) => {
 }
 
 const initEventListener = () => {
-    const gridDiv = document.querySelector('.grid');
     // Add Event Listener
     gridDiv.addEventListener('mouseover', (e) => {
         if(e.target.classList[0] === "grid-child") {
@@ -45,6 +44,10 @@ const resetGrid = () => {
         }
         createGrid(size)
     }
+}
+
+const clearGrid = () => {
+    Array.from(gridDiv.childNodes).forEach(item => item.style.backgroundColor = "white")
 }
 
 const createColorPallete = () => {
